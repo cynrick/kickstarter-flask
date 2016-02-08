@@ -5,7 +5,7 @@ class Member(db.Model):
     first_name = db.Column(db.String(100))
     last_name = db.Column(db.String(100))
     project = db.relationship('Project', backref='creator')
-    pledges = db.relationship('Plede', backref='pledgor', foreign_key='Pledge.member_id')
+    pledges = db.relationship('Pledge', backref='pledgor', foreign_keys='Pledge.member_id')
 
 class Project(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -17,7 +17,7 @@ class Project(db.Model):
     time_start = db.Column(db.DateTime)
     time_end = db.Column(db.DateTime)
     time_created = db.Column(db.DateTime)
-    pledges = db.relationship('Pledge', backref='project', foreign_key='Pledge.project_id')
+    pledges = db.relationship('Pledge', backref='project', foreign_keys='Pledge.project_id')
 
 class Pledge(db.Model):
     id = db.Column(db.Integer, primary_key=True)
