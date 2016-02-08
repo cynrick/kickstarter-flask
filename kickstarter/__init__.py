@@ -16,3 +16,7 @@ from kickstarter.models import *
 @app.route("/")
 def index():
     return render_template("index.html")
+
+@app.route("/projects/create/")
+def create():
+    return render_template("create.html")
