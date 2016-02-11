@@ -30,7 +30,7 @@ def create():
         time_end = datetime.datetime.strptime(time_end, "%Y-%m-%d")
 
         new_project = Project(
-            member_id = 1,
+            member_id = 1, # temporarily hard coded
             name = request.form.get("project_name"),
             short_description = request.form.get("short_description"),
             long_description = request.form.get("long_description"),
@@ -64,7 +64,7 @@ def pledge(project_id):
     if request.method == "GET":
         return render_template("pledge.html", project=project)
     if request.method == "POST":
-        guest_pledgor = db.session.query(Member).filter_by(id=2).one()
+        guest_pledgor = db.session.query(Member).filter_by(id=2).one() # temporarily hard coded
 
         new_pledge = Pledge(
             member_id = guest_pledgor.id,
